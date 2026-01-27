@@ -1,0 +1,12 @@
+/* CSS opcional (totalmente seguro: si no quieres, bórralo o deja vacío) */
+
+.small-note {
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
+/* ejemplo: compactar un poco el sidebar */
+section[data-testid="stSidebar"] .block-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
