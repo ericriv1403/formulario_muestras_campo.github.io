@@ -6,14 +6,13 @@ from __future__ import annotations
 # =============================================================================
 APP_TITLE = "Panel TTHH"
 APP_SUBTITLE = (
-    "Existencias • Salidas • KPI: Deserción 30D Estandarizada "
-    "+ Promedio móvil (3) + Meta (promedio 3 últimos registros del año pasado)"
+    "Existencias • Salidas • KPI de Deserción "
 )
 
 # UI (layout / navegación)
 LBL_SHOW_FILTERS = "Mostrar panel (cargar datos / filtros / opciones)"
 LBL_VIEW_PICK = "Vista"
-VIEW_1 = "Dashboard"
+VIEW_1 = "Dashboard KPI"
 VIEW_2 = "Descriptivos (Existencias & Salidas)"
 
 PANEL_TITLE = "Panel de control"
