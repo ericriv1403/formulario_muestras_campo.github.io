@@ -20,10 +20,6 @@ from rrhh_panel.ui.floating_chat import render_floating_chat
 
 
 def _build_context_summary(view: str) -> str:
-    """
-    Resumen corto para el chatbot.
-    NO debe romper si aún no hay datos cargados.
-    """
     g = st.session_state.get("__globals__")
     if not g:
         return f"Vista={view} | (sin datos cargados aún)"
@@ -47,22 +43,18 @@ def main() -> None:
     st.title(APP_TITLE)
     st.caption(APP_SUBTITLE)
 
-    # Top bar
     show_filters, view = topbar()
-
-    # Layout principal
     col_filters, col_main = columns_layout(show_filters)
 
-    # Sidebar (carga datos / filtros / opciones)
+    # Sidebar
     if show_filters:
         with col_filters:
             render_sidebar()
 
-    # Chat flotante SIEMPRE visible (no depende de datos)
-    context_summary = _build_context_summary(view=view)
-    render_floating_chat(context_summary=context_summary)
+    # Chat flotante SIEMPRE
+    render_floating_chat(context_summary=_build_context_summary(view=view))
 
-    # Main content
+    # Main
     with col_main:
         g = st.session_state.get("__globals__")
         fs = st.session_state.get("__fs__")
