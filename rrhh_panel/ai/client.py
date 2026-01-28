@@ -4,11 +4,12 @@ from zai import ZaiClient
 
 from rrhh_panel.utils.secrets import get_secret
 
+
 def get_zai_client() -> ZaiClient:
     api_key = get_secret("ZAI_API_KEY")
-    base_url = get_secret("ZAI_BASE_URL", "https://api.z.ai/api/paas/v4/")  # overseas default
+    base_url = get_secret("ZAI_BASE_URL", "https://api.z.ai/api/paas/v4/")
     if not api_key:
-        raise RuntimeError("Falta ZAI_API_KEY. Configúrala en Secrets o variables de entorno.")
+        raise RuntimeError("Falta ZAI_API_KEY. Configúrala en .streamlit/secrets.toml.")
     return ZaiClient(
         api_key=api_key,
         base_url=base_url,
@@ -16,12 +17,19 @@ def get_zai_client() -> ZaiClient:
         max_retries=2,
     )
 
-def chat_stream(messages, model: str = "glm-4.7-flash", temperature: float = 0.2, max_tokens: int = 1200):
+
+def chat_stream(
+    messages,
+    model: str = "glm-4.7-flash",
+    stream: bool = True,
+    temperature: float = 0.2,
+    max_tokens: int = 1200,
+):
     client = get_zai_client()
     return client.chat.completions.create(
         model=model,
         messages=messages,
-        stream=True,
+        stream=stream,
         temperature=temperature,
         max_tokens=max_tokens,
     )
