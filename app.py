@@ -10,6 +10,10 @@ from rrhh_panel.ui.sidebar import render_sidebar
 from rrhh_panel.ui.dashboard import render_dashboard
 from rrhh_panel.ui.descriptives import render_descriptives
 from rrhh_panel.config.texts import VIEW_1, VIEW_2, MSG_NEED_DATA, MSG_LOAD_FILE_TO_START
+from rrhh_panel.ui.floating_chat import render_floating_chat
+
+context_summary = f"Vista={view} | Periodo={period_label} | Rango={start_dt.date()} a {end_dt.date()}"
+render_floating_chat(context_summary=context_summary)
 
 def main() -> None:
     st.set_page_config(page_title=APP_TITLE, layout="wide")
