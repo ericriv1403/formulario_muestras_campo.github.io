@@ -16,7 +16,7 @@ def render_floating_chat(context_summary: str = "") -> None:
             st.session_state.chat_open = not st.session_state.chat_open
             st.rerun()
 
-    launcher.float("bottom: 1.25rem; right: 1.25rem; width: 3.25rem; z-index: 9999;")
+    launcher.float("bottom: 1.25rem; left: 1.25rem; width: 3.25rem; z-index: 9999;")
 
     # Panel flotante
     if st.session_state.chat_open:
@@ -35,9 +35,10 @@ def render_floating_chat(context_summary: str = "") -> None:
             st.divider()
             render_chat(context_summary=context_summary)
 
-        panel.float(
-            "bottom: 5rem; right: 1.25rem; width: 380px; "
-            "background-color: rgba(255,255,255,0.98); padding: 0.75rem; "
-            "border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; "
-            "box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 9999;"
-        )
+    panel.float(
+        "bottom: 5rem; left: 1.25rem; width: 380px; "
+        "background-color: rgba(255,255,255,0.98); padding: 0.75rem; "
+        "border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; "
+        "box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 9999;"
+    )
+
